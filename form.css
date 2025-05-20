@@ -1,0 +1,213 @@
+:root {
+    --primary-color: #3a5a78;
+    --secondary-color: #5b9bd5;
+    --accent-color: #ff6b35;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('file:///Users/nikhilbhanderi/Desktop/IWT_Project/ABC1.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(10, 25, 47, 0.85);
+    background-blend-mode: overlay;
+}
+
+
+.container {
+    width: 900px;
+    max-width: 95%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+
+.form-section {
+    padding: 40px;
+    width: 50%;
+    transition: all 0.5s ease;
+}
+
+.login-section {
+    background: white;
+}
+
+.register-section {
+    background: var(--light-gray);
+}
+
+.club-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.club-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--dark-gray);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--dark-gray);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(91, 155, 213, 0.2);
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(58, 90, 120, 0.1);
+}
+
+.toggle-section {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    z-index: 2;
+}
+
+.toggle-content {
+    width: 100%;
+}
+
+.toggle-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.toggle-section p {
+    margin-bottom: 30px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.active .toggle-section {
+    left: 0;
+}
+
+.form-footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--dark-gray);
+    text-align: center;
+}
+
+.form-footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .form-section {
+        width: 100%;
+        padding: 30px;
+    }
+    
+    .toggle-section {
+        position: relative;
+        width: 100%;
+        left: 0;
+        padding: 30px;
+    }
+    
+    .active .toggle-section {
+        display: none;
+    }
+}

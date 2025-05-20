@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events – Circuitology Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: #4a6bff;
+      --accent-color: #00c853;
+      --bg-color: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-color: #555;
+      --border-radius: 16px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      background-image: url('1.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: rgba(241, 222, 177, 0.905);
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+      color: #dbdada;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
+
+    .event-date {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #000000;
+    }
+
+    .divider {
+      margin: 40px 0 20px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #dbdada;
+      text-align: center;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], select {
+      width: 100%;
+      padding: 6px;
+      margin: 6px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #729f86;
+    }
+
+    .ranking {
+      margin-top: 15px;
+    }
+
+    .ranking p {
+      margin: 5px 0;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    
+    <h2> Circuitology Club Events</h2>
+    
+    <div class="divider">Upcoming Events</div>
+    <div class="cards-container">
+      <div class="card">
+        <h3>PCB Design Workshop</h3>
+        <p>Learn hands-on PCB design using KiCad/Eagle. Perfect for beginners and pros alike.</p>
+        <div class="event-date">Event Date: 25th April 2025</div>
+        <button class="btn" onclick="checkLoginAndRegister('registerModal1')">Register</button>
+      </div>
+
+      <div class="card">
+        <h3>IoT-Based Project Building</h3>
+        <p>Build smart solutions using sensors, ESP32, and cloud platforms. Bring your ideas to life!</p>
+        <div class="event-date">Event Date: 5th May 2025</div>
+        <button class="btn" onclick="checkLoginAndRegister('registerModal2')">Register</button>
+      </div>
+
+      <div class="card">
+        <h3>Hardware Hackathon</h3>
+        <p>Team up and innovate! Create hardware prototypes for real-world problems in 24 hours.</p>
+        <div class="event-date">Event Date: 15th June 2025</div>
+        <button class="btn" onclick="checkLoginAndRegister('registerModal3')">Register</button>
+      </div>
+    </div>
+
+    <div class="divider">Finished Events</div>
+    <div class="cards-container">
+      <div class="card">
+        <h3>Embedded Systems Challenge</h3>
+        <p>Participants solved real-time microcontroller tasks using Arduino and STM32 boards.</p>
+        <button class="btn" onclick="showSummary('Embedded Systems Challenge', ['Alice Sharma', 'Raj Patel', 'Megha Rao'])">Complete</button>
+      </div>
+
+      <div class="card">
+        <h3>Circuit Debugging Competition</h3>
+        <p>A fierce challenge of logic and speed to fix broken circuits in record time.</p>
+        <button class="btn" onclick="showSummary('Circuit Debugging Competition', ['Neha Jain', 'Aman Verma', 'Riya Shah'])">Complete</button>
+      </div>
+
+      <div class="card">
+        <h3>Soldering Mastery Bootcamp</h3>
+        <p>Hands-on session where members perfected their soldering techniques on real boards.</p>
+        <button class="btn" onclick="showSummary('Soldering Mastery Bootcamp', ['Kunal Das', 'Simran Kaur', 'Dev Mehta'])">Complete</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals for registration -->
+  <div id="registerModal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('registerModal1')">&times;</span>
+      <h3>Register for PCB Design Workshop</h3>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <input type="text" placeholder="Enrollment Number" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="text" placeholder="GR Number" required />
+        <input type="text" placeholder="Semester" required />
+        <select required>
+          <option value="IC">Information & Communication Engineering</option>
+          <option value="CSE">Computer Science Engineering</option>
+          <option value="ECE">Electronics and Communication Engineering</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+        </select>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </div>
+
+  <div id="registerModal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('registerModal2')">&times;</span>
+      <h3>Register for IoT-Based Project Building</h3>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <input type="text" placeholder="Enrollment Number" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="text" placeholder="GR Number" required />
+        <input type="text" placeholder="Semester" required />
+        <select required>
+          <option value="IC">Information & Communication Engineering</option>
+          <option value="CSE">Computer Science Engineering</option>
+          <option value="ECE">Electronics and Communication Engineering</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+        </select>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </div>
+
+  <div id="registerModal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('registerModal3')">&times;</span>
+      <h3>Register for Hardware Hackathon</h3>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <input type="text" placeholder="Enrollment Number" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="text" placeholder="GR Number" required />
+        <input type="text" placeholder="Semester" required />
+        <select required>
+          <option value="IC">Information & Communication Engineering</option>
+          <option value="CSE">Computer Science Engineering</option>
+          <option value="ECE">Electronics and Communication Engineering</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+        </select>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </div>
+
+  <!-- Summary Modal -->
+  <div id="summaryModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('summaryModal')">&times;</span>
+      <h3 id="summaryTitle"></h3>
+      <div class="ranking">
+        <p><strong>1st Place:</strong> <span id="rank1"></span></p>
+        <p><strong>2nd Place:</strong> <span id="rank2"></span></p>
+        <p><strong>3rd Place:</strong> <span id="rank3"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    function showSummary(eventName, winners) {
+      document.getElementById("summaryTitle").innerText = eventName + " Summary";
+      document.getElementById("rank1").innerText = winners[0];
+      document.getElementById("rank2").innerText = winners[1];
+      document.getElementById("rank3").innerText = winners[2];
+      openModal("summaryModal");
+    }
+  
+  function checkLoginAndRegister(modalId) {
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+    if (!isLoggedIn) {
+      alert("You need to be logged in to register for an event.");
+      window.location.href = "login.html";
+    } else {
+      openModal(modalId);
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("loggedIn");
+    alert("You have been logged out.");
+    location.reload();
+  }
+</script>
+
+</body>
+</html>
